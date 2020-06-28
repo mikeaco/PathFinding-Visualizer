@@ -512,7 +512,6 @@ export default class PathfindingVisualizer extends Component {
                                 You can also adjust the speed of the visualization using the slider below the grid.
                             </p>
                              
-                            <img src="Images/speedTut.png" alt="Speed Slider" width="150" height="50" style={{textAlign:"center"}}></img>
                             <p>Enjoy!</p>
                             <h6>click this page to exit</h6>
                         </p>
