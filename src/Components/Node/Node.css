@@ -1,0 +1,12 @@
+.node{
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(44, 44, 68);
+    background-color: whitesmoke;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+}
