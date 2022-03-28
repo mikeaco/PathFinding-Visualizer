@@ -44,14 +44,13 @@
   .popup .popuptext {
     visibility: visible;
     position: fixed;
-    top:5%;
-    left:30%;
+    top:15%;
+    left:calc(50vw - 250px);
     width: 500px;
     height: 500px;
     border-style: solid;
-    border-width: 1px;
-    border-color: lightblue;
-    border-radius: 25px;
+    border-width: 2px;
+    border-color: rgb(0, 0, 0);
     background-color:  rgb(163, 222, 255);;
   }
   .popup .show {

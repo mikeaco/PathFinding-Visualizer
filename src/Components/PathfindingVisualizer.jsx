@@ -4,6 +4,9 @@ import * as Algorithms from './Algorithms.js'
 import './PathfindingVisualizer.css';
 import { findAllByDisplayValue } from '@testing-library/react';
 import _ from "lodash";
+import startPic from '../Images/start.png'
+import endPic from '../Images/end.png'
+import drawGif from '../Images/drawGif.gif'
 const rowLen = 15;
 const colLen = 45;
 export default class PathfindingVisualizer extends Component {
@@ -89,7 +92,7 @@ export default class PathfindingVisualizer extends Component {
                 node.style.backgroundColor = "white";
                 copy[row][col].isWall = false;
             }
-            else if (node.style.backgroundImage != 'url("Images/start.png")' && node.style.backgroundImage != 'url("Images/end.png")') {
+            else if (node.style.backgroundImage != `url(${startPic})` && node.style.backgroundImage != `url(${endPic})`) {
                 node.style.backgroundColor = "rgb(44, 44, 68)";
                 copy[row][col].isWall = true;
             }
@@ -108,7 +111,7 @@ export default class PathfindingVisualizer extends Component {
                 node.style.backgroundColor = "white";
                 copy[row][col].isWall = false;
             }
-            else if (node.style.backgroundImage != 'url("Images/start.png")' && node.style.backgroundImage != 'url("Images/end.png")') {
+            else if (node.style.backgroundImage != `url(${startPic})` && node.style.backgroundImage != `url(${endPic})`) {
                 node.style.backgroundColor = "rgb(44, 44, 68)";
                 copy[row][col].isWall = true;
             }
@@ -131,7 +134,7 @@ export default class PathfindingVisualizer extends Component {
             copy[row][col].isStart = true;
             copy[row][col].isWall = false;
             node.style.backgroundColor = "white";
-            node.style.backgroundImage = 'url("Images/start.png")';
+            node.style.backgroundImage = `url(${startPic})`;
             node.style.backgroundRepeat = "no-repeat";
             node.style.backgroundPosition = "center";
             this.setState({
@@ -153,7 +156,7 @@ export default class PathfindingVisualizer extends Component {
             }
             copy[row][col].isWall = false;
             node.style.backgroundColor = "white";
-            node.style.backgroundImage = 'url("Images/end.png")';
+            node.style.backgroundImage = `url(${endPic})`;
             node.style.backgroundRepeat = "no-repeat";
             node.style.backgroundPosition = "center";
             copy[row][col].isEnd = true;
@@ -176,8 +179,8 @@ export default class PathfindingVisualizer extends Component {
 
             var allNodes = document.querySelectorAll(".node");
             for (let i = 0; i < allNodes.length; i++) {
-                if (allNodes[i].style.backgroundColor != "rgb(44, 44, 68)" && allNodes[i].style.backgroundImage != 'url("Images/start.png")' &&
-                    allNodes[i].style.backgroundImage != 'url("Images/end.png")')
+                if (allNodes[i].style.backgroundColor != "rgb(44, 44, 68)" && allNodes[i].style.backgroundImage != `url(${startPic})` &&
+                    allNodes[i].style.backgroundImage != `url(${endPic})`)
                     allNodes[i].style.backgroundColor = "white";
 
 
@@ -185,7 +188,7 @@ export default class PathfindingVisualizer extends Component {
             this.setState({
                 path: ""
             });
-            allNodes[end[1] + end[0] * this.state.nodes[0].length].style.backgroundImage = 'url("Images/end.png")';
+            allNodes[end[1] + end[0] * this.state.nodes[0].length].style.backgroundImage = `url(${endPic})`;
             allNodes[end[1] + end[0] * this.state.nodes[0].length].style.backgroundColor = "white";
         }
     }
@@ -211,9 +214,9 @@ export default class PathfindingVisualizer extends Component {
                 endNode: end,
                 path: ""
             });
-            allNodes[start[1] + start[0] * this.state.nodes[0].length].style.backgroundImage = 'url("Images/start.png")';
+            allNodes[start[1] + start[0] * this.state.nodes[0].length].style.backgroundImage = `url(${startPic})`;
             //allNodes[end[1] + end[0] * this.state.nodes[0].length].style.backgroundColor = "yellow";
-            allNodes[end[1] + end[0] * this.state.nodes[0].length].style.backgroundImage = 'url("Images/end.png")';
+            allNodes[end[1] + end[0] * this.state.nodes[0].length].style.backgroundImage = `url(${endPic})`;
 
         }
     }
@@ -231,8 +234,8 @@ export default class PathfindingVisualizer extends Component {
 
                     var node = allNodes[animate[i][1] + animate[i][0] * this.state.nodes[0].length];
 
-                    if (node.style.backgroundColor == "white" && node.style.backgroundImage != 'url("Images/start.png")' &&
-                        node.style.backgroundImage != 'url("Images/end.png")') {
+                    if (node.style.backgroundColor == "white" && node.style.backgroundImage != `url(${startPic})` &&
+                        node.style.backgroundImage != `url(${endPic})`) {
                         node.style.backgroundColor = "rgb(44, 44, 68)";
                         copy[animate[i][0]][animate[i][1]].isWall = true;
                     }
@@ -263,8 +266,8 @@ export default class PathfindingVisualizer extends Component {
                 for (let i = 0; i < animate.length; i++) {
                     var node = allNodes[animate[i][1] + animate[i][0] * this.state.nodes[0].length];
                     if (animate[i][2] == 0) {
-                        if (node.style.backgroundColor == "white" && node.style.backgroundImage != 'url("Images/start.png")' &&
-                            node.style.backgroundImage != 'url("Images/end.png")') {
+                        if (node.style.backgroundColor == "white" && node.style.backgroundImage != `url(${startPic})` &&
+                            node.style.backgroundImage != `url(${endPic})`) {
                             node.style.backgroundColor = "rgb(44, 44, 68)";
 
                             copy[animate[i][0]][animate[i][1]].isWall = true;
@@ -300,8 +303,8 @@ export default class PathfindingVisualizer extends Component {
             const anim = async () => {
                 for (let i = 0; i < animate.length; i++) {
                     var node = allNodes[animate[i][1] + animate[i][0] * this.state.nodes[0].length];
-                    if (node.style.backgroundColor == "white" && node.style.backgroundImage != 'url("Images/start.png")' &&
-                        node.style.backgroundImage != 'url("Images/end.png")') {
+                    if (node.style.backgroundColor == "white" && node.style.backgroundImage != `url(${startPic})` &&
+                        node.style.backgroundImage != `url(${endPic})`) {
                         node.style.backgroundColor = "rgb(44, 44, 68)";
                         copy[animate[i][0]][animate[i][1]].isWall = true;
                     }
@@ -328,13 +331,13 @@ export default class PathfindingVisualizer extends Component {
             const anim = async () => {
                 for (let i = 0; i < animate.length; i++) {
                     var node = allNodes[animate[i][1] + animate[i][0] * this.state.nodes[0].length];
-                    if (node.style.backgroundImage != 'url("Images/end.png")')
+                    if (node.style.backgroundImage != `url(${endPic})`)
                         node.style.backgroundColor = "aqua";
                     await sleep(getSpeed(this.state.speed));
                 }
                 for (let i = path.length - 1; i >= 0; i--) {
                     var node = allNodes[path[i][1] + path[i][0] * this.state.nodes[0].length];
-                    node.style.backgroundImage = 'url("Images/start.png")';
+                    node.style.backgroundImage = `url(${startPic})`;
                     //if (node.style.backgroundColor != "yellow")
                     node.style.backgroundColor = "rgb(255,242,0)";
                     await sleep(getSpeed(this.state.speed) / 2);
@@ -365,13 +368,13 @@ export default class PathfindingVisualizer extends Component {
             const anim = async () => {
                 for (let i = 0; i < animate.length; i++) {
                     var node = allNodes[animate[i][1] + animate[i][0] * this.state.nodes[0].length];
-                    if (node.style.backgroundImage != 'url("Images/end.png")')
+                    if (node.style.backgroundImage != `url(${endPic})`)
                         node.style.backgroundColor = "aqua";
                     await sleep(getSpeed(this.state.speed));
                 }
                 for (let i = path.length - 1; i >= 0; i--) {
                     var node = allNodes[path[i][1] + path[i][0] * this.state.nodes[0].length];
-                    node.style.backgroundImage = 'url("Images/start.png")';
+                    node.style.backgroundImage = `url(${startPic})`;
                     // if (node.style.backgroundColor != "yellow")
                     node.style.backgroundColor = "rgb(255,242,0)";
                     await sleep(getSpeed(this.state.speed) / 2);
@@ -414,10 +417,10 @@ export default class PathfindingVisualizer extends Component {
                 var imag = "none";
                 if (i == Math.floor(nodes.length / 2) && j == Math.floor(nodes[0].length / 4)) {
 
-                    imag = 'url("Images/start.png")';
+                    imag = `url(${startPic})`;
                 }
                 else if (i == Math.floor(nodes.length / 2) && j == Math.floor(nodes[0].length * (3 / 4))) {
-                    imag = 'url("Images/end.png")';
+                    imag = `url(${endPic})`;
                 }
                 cur.push(<Node key={k}
                     row={i}
@@ -502,11 +505,11 @@ export default class PathfindingVisualizer extends Component {
                             <p style={{ fontSize: "small", textAlign: "left" }}>
                                 To add walls, just drag your mouse across the grid.
                             </p>
-                            <img src="Images/wallTut.png" alt="wallExp" width="150" height="70" style={{ textAlign: "center" }}></img>
+                            <img src={drawGif} alt="wallExp" width="100" height="100" style={{ textAlign: "center" }}></img>
 
                             <p style={{ fontSize: "small", textAlign: "left" }}>
                                 This project also provides 3 maze generators. The first two are simple mazes that doesn't use complex algorithms
-                                (Vertical,Horizontal). The third option uses the concept of Prim's algorithm to create a randomly generated maze.
+                                (Vertical, Horizontal). The third option uses the concept of Prim's algorithm to create a randomly generated maze.
                             </p>
                             <p style={{ fontSize: "small", textAlign: "left" }}>
                                 You can also adjust the speed of the visualization using the slider below the grid.
